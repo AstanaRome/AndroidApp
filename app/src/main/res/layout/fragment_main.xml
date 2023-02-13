@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#14ffffff">
+
+    <ImageButton
+        android:id="@+id/btnPerson"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginEnd="57dp"
+        android:adjustViewBounds="true"
+        android:padding="20dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/btnDoctor"
+        app:layout_constraintEnd_toStartOf="@+id/btnDoctor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnDoctor"
+        app:srcCompat="@drawable/ic_persons" />
+
+    <ImageButton
+        android:id="@+id/btnVisit"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="242dp"
+        android:adjustViewBounds="true"
+        android:padding="20dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btnDoctor"
+        app:layout_constraintStart_toStartOf="@+id/btnDoctor"
+        app:layout_constraintTop_toBottomOf="@+id/btnDoctor"
+        app:srcCompat="@drawable/ic_visit" />
+
+    <ImageButton
+        android:id="@+id/btnDoctor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="178dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginBottom="73dp"
+        android:adjustViewBounds="true"
+        android:padding="20dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/btnVisit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnPerson"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_doctor" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
