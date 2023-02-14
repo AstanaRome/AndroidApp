@@ -32,7 +32,7 @@ public class VisitFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        lvVisits = view.findViewById(R.id.lvPersons);
+        lvVisits = view.findViewById(R.id.rvPersons);
         NetworkService networkService = NetworkService.getInstance();
         VisitApi api = networkService.getVisitApi();
 

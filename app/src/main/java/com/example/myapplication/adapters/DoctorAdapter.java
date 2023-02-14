@@ -43,8 +43,8 @@ public class DoctorAdapter extends ArrayAdapter<Doctor> {
 
 
 
-        EditText etFullname = item.findViewById(R.id.etFirstname);
-        EditText etQualifiation = item.findViewById(R.id.etLastname);
+        EditText etFullname = item.findViewById(R.id.tvFirstname);
+        EditText etQualifiation = item.findViewById(R.id.tvLastname);
         Doctor doctor = doctors.get(position);
         etFullname.setText(doctor.getFullname());
         etQualifiation.setText(doctor.getQualification());

@@ -29,6 +29,7 @@ public class MainFragment extends Fragment {
         btnPersons.setOnClickListener(this::showSecondFragment);
         btnDoctors.setOnClickListener(this::showThirdFragment);
         btnVisits.setOnClickListener(this::showVisitFragment);
+
     }
 
     private void showSecondFragment(View view) {

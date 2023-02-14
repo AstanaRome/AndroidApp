@@ -23,7 +23,7 @@ public interface PersonApi {
     @PUT("/persons")
     Call<Person> updatePerson(@Body Person task);
 
-    @DELETE("/person/{id}")
+    @DELETE("/persons/{id}")
     Call<ResponseBody> deletePerson(@Path("id") int personId);
 
 

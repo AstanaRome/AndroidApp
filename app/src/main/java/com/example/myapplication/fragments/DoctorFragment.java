@@ -31,7 +31,7 @@ public class DoctorFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        lvDoctors = view.findViewById(R.id.lvPersons);
+        lvDoctors = view.findViewById(R.id.rvPersons);
         NetworkService networkService = NetworkService.getInstance();
         DoctorApi api = networkService.getDoctorApi();
 
