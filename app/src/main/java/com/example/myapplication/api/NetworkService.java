@@ -1,8 +1,4 @@
-package com.example.myapplication;
-
-import com.example.myapplication.api.DoctorApi;
-import com.example.myapplication.api.PersonApi;
-import com.example.myapplication.api.VisitApi;
+package com.example.myapplication.api;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

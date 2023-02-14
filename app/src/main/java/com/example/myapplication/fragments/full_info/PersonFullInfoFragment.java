@@ -1,20 +1,16 @@
-package com.example.myapplication.fragments;
+package com.example.myapplication.fragments.full_info;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.example.myapplication.NetworkService;
+import com.example.myapplication.api.NetworkService;
 import com.example.myapplication.R;
-import com.example.myapplication.entity.Doctor;
 import com.example.myapplication.entity.Person;
 
 import retrofit2.Call;
@@ -45,8 +41,8 @@ public class PersonFullInfoFragment extends Fragment {
             }
         }
 
-        etFirstName = view.findViewById(R.id.etFirstname);
-        etLastname = view.findViewById(R.id.etLastname);
+        etFirstName = view.findViewById(R.id.etFullname);
+        etLastname = view.findViewById(R.id.etQualification);
         etPhone = view.findViewById(R.id.etPhone);
         etEmail = view.findViewById(R.id.etEmail);
         btnApply = view.findViewById(R.id.btnApply);

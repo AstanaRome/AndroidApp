@@ -1,9 +1,11 @@
-package com.example.myapplication;
+package com.example.myapplication.test;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.myapplication.MainActivity;
 
 public class SplashScreenActivity extends AppCompatActivity {
     @Override

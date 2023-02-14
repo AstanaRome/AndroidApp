@@ -37,6 +37,29 @@ public class Person implements Parcelable {
         this.lastName = lastName;
     }
 
+    protected Person(Parcel in) {
+        id = in.readInt();
+        lastName = in.readString();
+        firstName = in.readString();
+    }
+
+    public static final Creator<Person> CREATOR = new Creator<Person>() {
+        @Override
+        public Person createFromParcel(Parcel in) {
+            return new Person(in);
+        }
+
+        @Override
+        public Person[] newArray(int size) {
+            return new Person[size];
+        }
+    };
+
+    public String getFullName(){
+        return this.getFirstName() + " " + this.getLastName();
+    }
+
+
     public int getId() {
         return id;
     }
@@ -77,6 +100,8 @@ public class Person implements Parcelable {
 
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-
+        dest.writeInt(id);
+        dest.writeString(lastName);
+        dest.writeString(firstName);
     }
 }

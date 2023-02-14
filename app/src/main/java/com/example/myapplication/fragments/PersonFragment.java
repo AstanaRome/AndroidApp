@@ -2,7 +2,6 @@ package com.example.myapplication.fragments;
 
 
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.Toast;
 
@@ -16,13 +15,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import com.example.myapplication.NetworkService;
+import com.example.myapplication.api.NetworkService;
 import com.example.myapplication.R;
-import com.example.myapplication.RecyclerItemClickListener;
-import com.example.myapplication.VisitDialog;
+import com.example.myapplication.test.ClickInterface;
+import com.example.myapplication.test.RecyclerItemClickListener;
 import com.example.myapplication.adapters.PersonAdapter;
 import com.example.myapplication.api.PersonApi;
 import com.example.myapplication.entity.Person;
+import com.example.myapplication.fragments.full_info.PersonFullInfoFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import okhttp3.ResponseBody;
@@ -33,7 +33,7 @@ import retrofit2.Response;
 public class PersonFragment extends Fragment implements ClickInterface {
 
     public PersonFragment(){
-        super(R.layout.fragment_person);
+        super(R.layout.fragment_list);
     }
     private RecyclerView rvPersons;
     private PersonAdapter adapter;
@@ -45,7 +45,7 @@ public class PersonFragment extends Fragment implements ClickInterface {
         btnAdd = view.findViewById(R.id.btnAdd);
         btnAdd.setOnClickListener(this::addPerson);
 
-        rvPersons = view.findViewById(R.id.rvPersons);
+        rvPersons = view.findViewById(R.id.rvList);
 
         fillAdapter();
 

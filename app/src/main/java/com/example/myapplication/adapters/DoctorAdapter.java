@@ -1,107 +1,52 @@
 package com.example.myapplication.adapters;
-
 import android.content.Context;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
+import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.myapplication.R;
+import com.example.myapplication.entity.Doctor;
 
 import java.util.List;
 
-import com.example.myapplication.NetworkService;
-import com.example.myapplication.R;
-import com.example.myapplication.entity.Doctor;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.ViewHolder>{
 
-public class DoctorAdapter extends ArrayAdapter<Doctor> {
-    private int resource;
-    private List<Doctor> doctors;
-    private LayoutInflater inflater;
-    public DoctorAdapter(@NonNull Context context, int resource, List<Doctor>doctors) {
-        super(context, resource, doctors);
-        this.resource = resource;
+    private final LayoutInflater inflater;
+    private final List<Doctor> doctors;
+
+    public DoctorAdapter(Context context, List<Doctor> doctors) {
         this.doctors = doctors;
-        inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.inflater = LayoutInflater.from(context);
+    }
+    @Override
+    public DoctorAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+        View view = inflater.inflate(R.layout.doctor_list_item, parent, false);
+        return new ViewHolder(view);
     }
 
-    @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
-
-
-        View item = inflater.inflate(resource, parent, false);
-
-
-
-
-        EditText etFullname = item.findViewById(R.id.tvFirstname);
-        EditText etQualifiation = item.findViewById(R.id.tvLastname);
+    public void onBindViewHolder(DoctorAdapter.ViewHolder holder, int position) {
         Doctor doctor = doctors.get(position);
-        etFullname.setText(doctor.getFullname());
-        etQualifiation.setText(doctor.getQualification());
+        holder.fullnameView.setText(doctor.getFullname());
 
-        etFullname.addTextChangedListener(new TextWatcher() {
-            public void afterTextChanged(Editable s) {
-                doctor.setFullname(s.toString());
-                updateDoctor(doctor);
-            }
-
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
-
-        });
-        etQualifiation.addTextChangedListener(new TextWatcher() {
-            public void afterTextChanged(Editable s) {
-                doctor.setQualification(s.toString());
-                updateDoctor(doctor);
-            }
-
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
-
-        });
-
-
-        return item;
     }
-
 
     @Override
-    public int getItemViewType(int position) {
-        return 0;
+    public int getItemCount() {
+        return doctors.size();
     }
 
-    public int getViewTypeCount() {
-        return 1;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        final TextView fullnameView;
+        ViewHolder(View view){
+            super(view);
+            fullnameView = view.findViewById(R.id.tvFullname);       }
     }
 
-    public void updateDoctor(Doctor doctor){
-        System.out.println(doctor);
-        NetworkService
-                .getInstance()
-                .getDoctorApi()
-                .updateDoctor(doctor)
-                .enqueue(new Callback<Doctor>() {
-                    @Override
-                    public void onResponse(Call<Doctor> call, Response<Doctor> response) {
-                        Doctor buf = response.body();
-                    }
-                    @Override
-                    public void onFailure(Call<Doctor> call, Throwable t) {
-                    }
-                });
-    }
 
 
 }

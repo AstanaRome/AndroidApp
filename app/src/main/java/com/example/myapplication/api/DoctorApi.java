@@ -23,7 +23,7 @@ public interface DoctorApi {
     @PUT("/doctors")
     Call<Doctor> updateDoctor(@Body Doctor doctor);
 
-    @DELETE("/doctor/{id}")
+    @DELETE("/doctors/{id}")
     Call<ResponseBody> deleteDoctor(@Path("id") int doctorId);
 
 

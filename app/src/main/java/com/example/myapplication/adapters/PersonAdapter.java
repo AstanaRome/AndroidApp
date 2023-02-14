@@ -45,7 +45,7 @@ public class PersonAdapter  extends RecyclerView.Adapter<PersonAdapter.ViewHolde
         final TextView firstnameView;
         ViewHolder(View view){
             super(view);
-            firstnameView = view.findViewById(R.id.name);       }
+            firstnameView = view.findViewById(R.id.tvFullname);       }
     }
 
 

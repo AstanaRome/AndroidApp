@@ -1,9 +1,14 @@
 package com.example.myapplication.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Doctor {
+public class Doctor implements Parcelable {
 
     @Expose
     @SerializedName("id")
@@ -36,6 +41,24 @@ public class Doctor {
         this.qualification = qualification;
     }
 
+    protected Doctor(Parcel in) {
+        id = in.readInt();
+        fullName = in.readString();
+        qualification = in.readString();
+    }
+
+    public static final Creator<Doctor> CREATOR = new Creator<Doctor>() {
+        @Override
+        public Doctor createFromParcel(Parcel in) {
+            return new Doctor(in);
+        }
+
+        @Override
+        public Doctor[] newArray(int size) {
+            return new Doctor[size];
+        }
+    };
+
     public int getId() {
         return id;
     }
@@ -67,5 +90,17 @@ public class Doctor {
                 ", fullname='" + fullName+ '\'' +
                 ", qualification='" + qualification + '\'' +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(fullName);
+        dest.writeString(qualification);
     }
 }

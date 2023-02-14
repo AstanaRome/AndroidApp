@@ -23,7 +23,7 @@ public interface VisitApi {
     @PUT("/visits")
     Call<Visit> updateVisit(@Body Visit visit);
 
-    @DELETE("/visit/{id}")
+    @DELETE("/visits/{id}")
     Call<ResponseBody> deleteVisit(@Path("id") int visitId);
 
 
