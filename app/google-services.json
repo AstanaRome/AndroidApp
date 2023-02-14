@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "882320523069",
+    "project_id": "appmedcard",
+    "storage_bucket": "appmedcard.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882320523069:android:ffbe195d54140f64264f54",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "882320523069-9u7ivrk7gn3dffg5hea6e2m221ana1nv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMdS2zIHnlWA2KMDvtafc3RhRZ2EXqaYc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "882320523069-9u7ivrk7gn3dffg5hea6e2m221ana1nv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

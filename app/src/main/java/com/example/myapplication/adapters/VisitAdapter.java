@@ -34,6 +34,7 @@ public class VisitAdapter extends RecyclerView.Adapter<VisitAdapter.ViewHolder>{
         holder.tvPersonView.setText(visit.getPerson().getFullName());
         holder.tvDoctorView.setText(visit.getDoctor().getFullname());
         holder.tvCause.setText(visit.getCause());
+
     }
 
     @Override
