@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,6 +21,7 @@ import com.example.myapplication.entity.Doctor;
 import com.example.myapplication.entity.Visit;
 import com.example.myapplication.entity.Person;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +40,7 @@ public class VisitFullInfoFragment extends Fragment {
     Spinner spPerson;
     Spinner spDoctor;
     private EditText etCause;
+    //private EditText etDate;
     String fullName_person;
     String fullName_doctor;
 
@@ -58,19 +61,22 @@ public class VisitFullInfoFragment extends Fragment {
             }
         }
 
-        EditText etCause = view.findViewById(R.id.etCause);
+        etCause = view.findViewById(R.id.etCause);
+        //EditText etDate = view.findViewById(R.id.etDate);
         spDoctor = view.findViewById(R.id.spDoctor);
         spPerson = view.findViewById(R.id.spPerson);
         btnApply = view.findViewById(R.id.btnAddVisit);
         btnApply.setOnClickListener(this::change);
-        etCause.setText(visit.getCause());
-
+//        etCause.setText(visit.getCause());
+//        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");//formating according to my need
+//        String date = formatter.format(visit.getVisitDate());
+        //etDate.setText(visit.getVisitDate());
         spPerson.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 String str = (String) spPerson.getSelectedItem();
                 for (Person person : persons) {
-                    String str2 = person.getFirstName() + " " + person.getLastName();
+                    String str2 = person.getFullName();
                     if (str2.equals(str)) {
                         visit.setPerson(person);
                     }
@@ -89,7 +95,7 @@ public class VisitFullInfoFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 String str = (String) spDoctor.getSelectedItem();
                 for (Doctor doctor : doctors) {
-                    String str2 = doctor.getFullname();
+                    String str2 = doctor.getFullName();
                     if (str2.equals(str)) {
                         visit.setDoctor(doctor);
                     }
@@ -106,7 +112,8 @@ public class VisitFullInfoFragment extends Fragment {
         fillSpDoctor(visit);
     }
     private void change(View view){
-
+        visit.setCause(etCause.getText().toString());
+        //visit.setVisitDate(etDate.getText().toString());
         if (key.equals("update")) {
             updateVisit(visit);
         } else{
@@ -124,6 +131,8 @@ public class VisitFullInfoFragment extends Fragment {
                     @Override
                     public void onResponse(Call<Visit> call, Response<Visit> response) {
                         Visit buf = response.body();
+                        Toast.makeText(getContext(), "Succesful",
+                                Toast.LENGTH_SHORT).show();
                     }
                     @Override
                     public void onFailure(Call<Visit> call, Throwable t) {
@@ -139,6 +148,8 @@ public class VisitFullInfoFragment extends Fragment {
                         @Override
                         public void onResponse(Call<Visit> call, Response<Visit> response) {
                             Visit buf = response.body();
+                            Toast.makeText(getContext(), "Succesful",
+                                    Toast.LENGTH_SHORT).show();
                         }
                         @Override
                         public void onFailure(Call<Visit> call, Throwable t) {
@@ -158,10 +169,10 @@ public class VisitFullInfoFragment extends Fragment {
                 for (Doctor doctor: doctors) {
                     if (key.equals("update")) {
                         if (doctor.getId() == visit.getDoctor().getId()) {
-                            fullName_person = visit.getDoctor().getFullname();
+                            fullName_person = visit.getDoctor().getFullName();
                         }
                     }
-                    names.add(doctor.getFullname());
+                    names.add(doctor.getFullName());
                 }
                 ArrayAdapter<String> adapter_doctor = new ArrayAdapter<String>(getContext(),
                         android.R.layout.simple_spinner_item, names);

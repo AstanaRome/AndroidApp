@@ -31,7 +31,10 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.ViewHolder
     @Override
     public void onBindViewHolder(DoctorAdapter.ViewHolder holder, int position) {
         Doctor doctor = doctors.get(position);
-        holder.fullnameView.setText(doctor.getFullname());
+        holder.fullNameView.setText(doctor.getFullName());
+        holder.countryView.setText(doctor.getCountry());
+        holder.emailView.setText(doctor.getEmail());
+        holder.qualificationView.setText(doctor.getQualification());
 
     }
 
@@ -41,10 +44,14 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.ViewHolder
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        final TextView fullnameView;
+        final TextView fullNameView, qualificationView, emailView, countryView;
         ViewHolder(View view){
             super(view);
-            fullnameView = view.findViewById(R.id.tvFullname);       }
+            fullNameView = view.findViewById(R.id.tvFullname);
+            qualificationView = view.findViewById(R.id.tvQualification);
+            emailView = view.findViewById(R.id.tvEmail);
+            countryView = view.findViewById(R.id.tvCountry);
+        }
     }
 
 

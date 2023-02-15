@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Android Firebase Login</string>
+    <string name="app_name">Medicine card</string>
 
     <string name="emailEdit">Email</string>
     <string name="passwordEdit">Password</string>

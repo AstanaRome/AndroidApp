@@ -32,8 +32,9 @@ public class VisitAdapter extends RecyclerView.Adapter<VisitAdapter.ViewHolder>{
     public void onBindViewHolder(VisitAdapter.ViewHolder holder, int position) {
         Visit visit = visits.get(position);
         holder.tvPersonView.setText(visit.getPerson().getFullName());
-        holder.tvDoctorView.setText(visit.getDoctor().getFullname());
+        holder.tvDoctorView.setText(visit.getDoctor().getFullName());
         holder.tvCause.setText(visit.getCause());
+        holder.tvDate.setText(visit.getVisitDate());
 
     }
 
@@ -43,12 +44,13 @@ public class VisitAdapter extends RecyclerView.Adapter<VisitAdapter.ViewHolder>{
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        final TextView tvDoctorView, tvPersonView, tvCause;
+        final TextView tvDoctorView, tvPersonView, tvCause, tvDate;
         ViewHolder(View view){
             super(view);
             tvDoctorView = view.findViewById(R.id.tvDoctor);
             tvPersonView = view.findViewById(R.id.tvPerson);
             tvCause = view.findViewById(R.id.tvCause);
+            tvDate = view.findViewById(R.id.tvDate);
         }
     }
 

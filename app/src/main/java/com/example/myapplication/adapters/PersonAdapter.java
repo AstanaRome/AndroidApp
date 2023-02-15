@@ -32,7 +32,10 @@ public class PersonAdapter  extends RecyclerView.Adapter<PersonAdapter.ViewHolde
     @Override
     public void onBindViewHolder(PersonAdapter.ViewHolder holder, int position) {
         Person person = persons.get(position);
-        holder.firstnameView.setText(person.getFirstName() + " " + person.getLastName());
+        holder.fullNameView.setText(person.getFullName());
+        holder.ageView.setText(String.valueOf(person.getAge()));
+        holder.emailView.setText(person.getEmail());
+        holder.phoneView.setText(person.getPhone());
 
     }
 
@@ -42,10 +45,15 @@ public class PersonAdapter  extends RecyclerView.Adapter<PersonAdapter.ViewHolde
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        final TextView firstnameView;
+        final TextView fullNameView, emailView, phoneView;
+        final TextView ageView;
         ViewHolder(View view){
             super(view);
-            firstnameView = view.findViewById(R.id.tvFullname);       }
+            fullNameView = view.findViewById(R.id.tvFullname);
+            ageView = view.findViewById(R.id.tvAge);
+            emailView = view.findViewById(R.id.tvEmail);
+            phoneView = view.findViewById(R.id.tvPhone);
+        }
     }
 
 

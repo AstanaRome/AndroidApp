@@ -5,9 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#14ffffff"
+    android:background="#E0FFFF"
     android:layout_marginBottom="50dp"
     android:layout_marginTop="50dp"
+
     >
 
     <ImageButton
@@ -24,7 +25,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btnDoctor"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/ic_persons" />
+        app:srcCompat="@drawable/man_and_woman_user_icon" />
 
     <ImageButton
         android:id="@+id/btnVisit"
@@ -38,7 +39,7 @@
         app:layout_constraintEnd_toEndOf="@+id/btnDoctor"
         app:layout_constraintStart_toStartOf="@+id/btnDoctor"
         app:layout_constraintTop_toBottomOf="@+id/btnDoctor"
-        app:srcCompat="@drawable/ic_visit" />
+        app:srcCompat="@drawable/medical_history_icon" />
 
     <ImageButton
         android:id="@+id/btnDoctor"
@@ -54,6 +55,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnPerson"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_doctor" />
+        app:srcCompat="@drawable/doctor_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

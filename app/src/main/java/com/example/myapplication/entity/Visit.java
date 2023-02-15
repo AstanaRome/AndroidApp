@@ -25,25 +25,26 @@ public class Visit implements Parcelable {
     @SerializedName("cause")
     private String cause;
 
-
-
-
-
+    @Expose
+    @SerializedName("visit_date")
+    private String visitDate;
 
     public Visit() {
     }
 
-    public Visit(int id, Person person, Doctor doctor, String cause) {
+    public Visit(Person person, Doctor doctor, String cause, String visitDate) {
+        this.person = person;
+        this.doctor = doctor;
+        this.cause = cause;
+        this.visitDate = visitDate;
+    }
+
+    public Visit(int id, Person person, Doctor doctor, String cause, String visitDate) {
         this.id = id;
         this.person = person;
         this.doctor = doctor;
         this.cause = cause;
-    }
-
-    public Visit( Person person, Doctor doctor, String cause) {
-        this.person = person;
-        this.doctor = doctor;
-        this.cause = cause;
+        this.visitDate = visitDate;
     }
 
     protected Visit(Parcel in) {
@@ -51,6 +52,21 @@ public class Visit implements Parcelable {
         person = in.readParcelable(Person.class.getClassLoader());
         doctor = in.readParcelable(Doctor.class.getClassLoader());
         cause = in.readString();
+        visitDate = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeParcelable(person, flags);
+        dest.writeParcelable(doctor, flags);
+        dest.writeString(cause);
+        dest.writeString(visitDate);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<Visit> CREATOR = new Creator<Visit>() {
@@ -97,6 +113,14 @@ public class Visit implements Parcelable {
         this.cause = cause;
     }
 
+    public String getVisitDate() {
+        return visitDate;
+    }
+
+    public void setVisitDate(String visitDate) {
+        this.visitDate = visitDate;
+    }
+
     @Override
     public String toString() {
         return "Visit{" +
@@ -104,19 +128,7 @@ public class Visit implements Parcelable {
                 ", person=" + person +
                 ", doctor=" + doctor +
                 ", cause='" + cause + '\'' +
+                ", visitDate='" + visitDate + '\'' +
                 '}';
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeInt(id);
-        dest.writeParcelable(person, flags);
-        dest.writeParcelable(doctor, flags);
-        dest.writeString(cause);
     }
 }

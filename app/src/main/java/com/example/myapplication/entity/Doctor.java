@@ -15,13 +15,23 @@ public class Doctor implements Parcelable {
     private int id;
 
     @Expose
-    @SerializedName("fullname")
-    private String fullName;
+    @SerializedName("first_name")
+    private String firstName;
+
+    @Expose
+    @SerializedName("last_name")
+    private String lastName;
 
     @Expose
     @SerializedName("qualification")
     private String qualification;
 
+    @Expose
+    @SerializedName("email")
+    private String email;
+    @Expose
+    @SerializedName("country")
+    private String country;
 
 
 
@@ -30,21 +40,30 @@ public class Doctor implements Parcelable {
     public Doctor() {
     }
 
-    public Doctor(int id, String fullName, String qualification) {
-        this.id = id;
-        this.fullName = fullName;
+    public Doctor(String firstName, String lastName, String qualification, String email, String country) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.qualification = qualification;
+        this.email = email;
+        this.country = country;
     }
 
-    public Doctor(String fullname, String qualification) {
-        this.fullName = fullname;
+    public Doctor(int id, String firstName, String lastName, String qualification, String email, String country) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.qualification = qualification;
+        this.email = email;
+        this.country = country;
     }
 
     protected Doctor(Parcel in) {
         id = in.readInt();
-        fullName = in.readString();
+        firstName = in.readString();
+        lastName = in.readString();
         qualification = in.readString();
+        email = in.readString();
+        country = in.readString();
     }
 
     public static final Creator<Doctor> CREATOR = new Creator<Doctor>() {
@@ -67,12 +86,20 @@ public class Doctor implements Parcelable {
         this.id = id;
     }
 
-    public String getFullname() {
-        return fullName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFullname(String fullName) {
-        this.fullName = fullName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getQualification() {
@@ -83,12 +110,34 @@ public class Doctor implements Parcelable {
         this.qualification = qualification;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+    public String getFullName(){
+        return this.getFirstName() + " " + this.getLastName();
+    }
+
     @Override
     public String toString() {
         return "Doctor{" +
                 "id=" + id +
-                ", fullname='" + fullName+ '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", qualification='" + qualification + '\'' +
+                ", email='" + email + '\'' +
+                ", country='" + country + '\'' +
                 '}';
     }
 
@@ -100,7 +149,10 @@ public class Doctor implements Parcelable {
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeInt(id);
-        dest.writeString(fullName);
+        dest.writeString(firstName);
+        dest.writeString(lastName);
         dest.writeString(qualification);
+        dest.writeString(email);
+        dest.writeString(country);
     }
 }
